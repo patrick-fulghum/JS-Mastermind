@@ -137,14 +137,17 @@ function compareToAnswer(){
   let exactCount = 0;
   let nearCount = 0;
   let dupAnswer = answer.slice();
+  let correctIndex;
   for (var i = 0; i < answer.length; i++) {
     if (dupAnswer.includes(guess[i])) {
       if (dupAnswer[i] === guess[i]) {
         exactCount += 1;
+        correctIndex = i;
       } else {
         nearCount += 1;
+        correctIndex = guess.indexOf(answer[i]);
       }
-      dupAnswer[i] = "Accounted For";
+      dupAnswer[correctIndex] = "Accounted For";
     }
   }
   checkWinner(exactCount, nearCount);
