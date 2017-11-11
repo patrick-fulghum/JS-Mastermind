@@ -136,22 +136,15 @@ function changeColor(el){
 function compareToAnswer(){
   var exactCount = 0;
   var nearCount = 0;
-  var copyGuess = guess.slice();
-  var copyAnswer = answer.slice();
-  for (var i = 0; i < copyAnswer.length; i++){
-    if (copyAnswer[i] === copyGuess[i]){
-      copyGuess[i]=NaN;
-      copyAnswer[i]=NaN;
-      exactCount++;
+  for (var i = 0; i < answer.length; i++) {
+    if (answer.includes(guess[i])) {
+      if (answer[i] === guess[i]) {
+        exactCount += 1;
+      } else {
+        nearCount += 1;
+      }
     }
   }
-
-  for (var t = 0; t < copyAnswer.length; t ++){
-    if (copyAnswer.includes(guess[t]) && copyAnswer[t] !== guess[t]){
-      t++;
-    }
-  }
-
   checkWinner(exactCount, nearCount);
 }
 
