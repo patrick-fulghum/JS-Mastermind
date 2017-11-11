@@ -148,7 +148,7 @@ function compareToAnswer(){
   }
 
   for (var i = 0; i < copyAnswer.length; i ++){
-    if (copyAnswer.includes(guess[i])){
+    if (copyAnswer.includes(guess[i]) && copyAnswer[i] !== guess[i]){
       near_count++;
     }
   }
