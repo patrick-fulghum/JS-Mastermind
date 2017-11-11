@@ -134,15 +134,17 @@ function changeColor(el){
 }
 
 function compareToAnswer(){
-  var exactCount = 0;
-  var nearCount = 0;
+  let exactCount = 0;
+  let nearCount = 0;
+  let dupAnswer = answer.slice();
   for (var i = 0; i < answer.length; i++) {
-    if (answer.includes(guess[i])) {
-      if (answer[i] === guess[i]) {
+    if (dupAnswer.includes(guess[i])) {
+      if (dupAnswer[i] === guess[i]) {
         exactCount += 1;
       } else {
         nearCount += 1;
       }
+      dupAnswer[i] = "Accounted For";
     }
   }
   checkWinner(exactCount, nearCount);
